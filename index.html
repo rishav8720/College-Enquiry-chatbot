@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Enquiry Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="heading">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Ramsheth Thakur College of Commerce and Science</h1>
+        <div id="clock"></div>
+    </div>
+</header>
+
+<h2 class="chatbot-name">Welcome to RTCCS</h2>
+
+<div class="chat-container">
+    <iframe
+        style="border: none; width: 100%; height: 100%;"
+        srcdoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
+        <script>
+          window.botpressWebChat.init({
+              'composerPlaceholder': 'Chat with Chatbuddy',
+              'botConversationDescription': 'Your friendly chatbot',
+              'botName': 'Chatbuddy',
+              'botId': 'fd0741d5-d97f-49b6-ac8c-21415d0aa24e',
+              'hostUrl': 'https://cdn.botpress.cloud/webchat/v0',
+              'messagingUrl': 'https://messaging.botpress.cloud',
+              'clientId': 'fd0741d5-d97f-49b6-ac8c-21415d0aa24e',
+              'enableConversationDeletion': true,
+              'showPoweredBy': false,
+              'className': 'webchatIframe',
+              'containerWidth': '100%25',
+              'layoutWidth': '100%25',
+              'hideWidget': true,
+              'showCloseButton': false,
+              'disableAnimations': true,
+              'closeOnEscape': false,
+              'showConversationsButton': false,
+              'enableTranscriptDownload': false,
+              'stylesheet':'https://webchat-styler-css.botpress.app/prod/9212eaf5-d4c2-4760-a9de-7c2f2f9028b1/v45388/style.css'
+          });
+        window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
+        </script></body>"
+        width="100%"
+        height="100%"
+    ></iframe>
+</div>
+
+<script src="script.js"></script>
+<script src="clock.js"></script>
+</body>
+</html>

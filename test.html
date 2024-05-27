@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Chatbot</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .chat-container {
+        max-width: 600px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .chat-messages {
+        padding: 10px;
+        overflow-y: scroll;
+        height: 300px;
+    }
+    .message {
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 5px 0;
+    }
+    .message.bot {
+        background-color: #dcf8c6;
+        text-align: right;
+    }
+    .message.user {
+        background-color: #cce5ff;
+    }
+    .chat-form {
+        padding: 10px;
+        background-color: #fff;
+    }
+    .chat-form input[type="text"] {
+        width: calc(100% - 60px);
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+    .chat-form button {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="chat-container">
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-form">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    const chatMessages = document.getElementById('chat-messages');
+    const userInput = document.getElementById('user-input');
+
+    function sendMessage() {
+        const message = userInput.value;
+        if (message.trim() === '') return;
+
+        appendMessage('user', message);
+        userInput.value = '';
+
+        // Simulate response from backend (Python ChatterBot)
+        setTimeout(() => {
+            // Here you would typically send the message to your backend (Python) and receive a response
+            const botReply = getBotReply(message); // Placeholder function, replace with actual backend call
+            appendMessage('bot', botReply);
+        }, 500);
+    }
+
+    function appendMessage(sender, message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', sender);
+        messageDiv.textContent = message;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+    }
+
+    // Placeholder function for getting bot's reply from backend
+    function getBotReply(userMessage) {
+        // Here you would typically make an AJAX request to your backend (Python) to get the bot's reply
+        // For simplicity, returning static responses
+        const responses = {
+            "Hello": "Hi there! How can I assist you today?",
+            "How do I apply for courses?": "You can apply for courses through the college website. Would you like more details?",
+            // Add more responses as needed
+        };
+        return responses[userMessage] || "I'm sorry, I didn't understand that.";
+    }
+</script>
+</body>
+</html>
